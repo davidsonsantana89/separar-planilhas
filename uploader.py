@@ -36,5 +36,5 @@ with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
 st.download_button(
 label="Baixe a planilha.",
 data=output,
-file_name="pandas_multiple.xlsx",
+file_name="tumas_eletivas.xlsx",
 mime="application/vnd.ms-excel")
