@@ -9,8 +9,7 @@ st.markdown("""
 {
     visibility: hidden;
 }
-</style>, unsafe_allow_html = True
-""")
+</style>""", unsafe_allow_html = True)
 
 
 st.title("WEB APP - ETE LUIZ ALVES LACERDA")
