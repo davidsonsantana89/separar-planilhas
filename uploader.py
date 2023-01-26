@@ -37,6 +37,8 @@ try:
 
     for turma in turmas:
         lista_plan.append(df[df['turma'] == turma])
+        
+    # esse trecho do código é baseado na discussão do link https://discuss.streamlit.io/t/how-to-add-a-download-excel-csv-function-to-a-button/4474/16
 
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         for plan, i in zip(lista_plan, range(1,1+len(lista_plan))):
