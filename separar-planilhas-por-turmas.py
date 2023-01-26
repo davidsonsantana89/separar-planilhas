@@ -3,23 +3,59 @@
 
 import pandas as pd
 import streamlit as st
+from io import StringIO
 
 st.set_page_config(page_title = "Web App ETE LAL")
 st.title('ETE LAL')
 
 st.file_uploader('Insira os arquivos aqui.')
 
-caminho = "https://drive.google.com/drive/folders/13TF1k1BbhINlrpLfQSTaZhw0wJJXs0WW?usp=sharing"
+#adding a file uploader
 
-print(caminho)
+file = st.file_uploader("Please choose a file")
 
-# df = pd.read_excel(caminho)
+if file is not None:
+
+    #To read file as bytes:
+
+    bytes_data = file.getvalue()
+
+    st.write(bytes_data)
 
 
-#turmas = df['TURMA'].unique()
+
+    #To convert to a string based IO:
+
+    stringio = StringIO(file.getvalue().decode("utf-8"))
+
+    st.write(stringio)
 
 
-#for turma in turmas:
-#    df[df['TURMA'] == turma].to_excel(r"C:\Users\david\OneDrive\ESCOLA\ETE LAL\CONTROLE DE FREQUÊNCIAS E NOTAS\2021\ELETIVAS\ANUAL\TURMAS" + '\\' + f'{turma}.xlsx', index=False)
 
-# df.to_excel(r'C:\Users\david\OneDrive\ESCOLA\ETE LAL\CONTROLE DE FREQUÊNCIAS E NOTAS\2021\ELETIVAS\ANUAL\TURMAS\geral-anual.xlsx', index=False)
+    #To read file as string:
+
+    string_data = stringio.read()
+
+    st.write(string_data)
+
+
+
+    #Can be used wherever a "file-like" object is accepted:
+
+    df= pd.read_csv(file)
+
+    st.write(df)
+
+
+
+#adding a file uploader to accept multiple CSV files
+
+uploaded_files = st.file_uploader("Please choose a CSV file", accept_multiple_files=True)
+
+for file in uploaded_files:
+
+    bytes_data = file.read()
+
+    st.write("File uploaded:", file.name)
+
+    st.write(bytes_data)
