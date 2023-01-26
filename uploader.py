@@ -4,7 +4,7 @@ import xlsxwriter
 from io import BytesIO
 
 st.title("WEB APP - ETE LUIZ ALVES LACERDA")
-st.text('Este aplicativo reune as planilhas de componentes eletivos em planilhas por turma, em cada aba.\nEm fase de testes.')
+st.text('Este aplicativo reune as planilhas de\n componentes eletivos em planilhas por turma, em cada aba.\nEm fase de testes.')
 st.markdown("---")
 planilhas = st.file_uploader("Clique ou arraste suas planilhas aqui.", type='xlsx', accept_multiple_files=True)
 
