@@ -3,6 +3,16 @@ import pandas as pd
 import xlsxwriter
 from io import BytesIO
 
+st.markdown("""
+<style>
+.css-1rs6os.edgvbvh3
+{
+    visibility: hidden;
+}
+</style>
+""")
+
+
 st.title("WEB APP - ETE LUIZ ALVES LACERDA")
 st.text('Este aplicativo reune as planilhas de componentes\neletivos em planilhas por turma, em cada aba.\nEm fase de testes.')
 st.markdown("---")
