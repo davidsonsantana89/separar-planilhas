@@ -56,6 +56,6 @@ for file in uploaded_files:
 
     bytes_data = pd.read_xlsx(file)
 
-    st.write("File uploaded:", file.name)
+    st.write("File uploaded:", file)
 
     st.write(bytes_data)
