@@ -8,33 +8,37 @@ st.text('Este aplicativo reune as planilhas de componentes eletivos em planilhas
 st.markdown("---")
 planilhas = st.file_uploader("Clique ou arraste suas planilhas aqui.", type='xlsx', accept_multiple_files=True)
 
+try:
+    
+    lista_df = []
+    for planilha in planilhas:
+        lista_df.append(pd.read_excel(planilha))
 
-lista_df = []
-for planilha in planilhas:
-    lista_df.append(pd.read_excel(planilha))
+    if lista_df is not None:
+        df = pd.concat(lista_df).reset_index(drop=True)
+        # st.dataframe(df)
 
-if lista_df is not None:
-    df = pd.concat(lista_df).reset_index(drop=True)
-    # st.dataframe(df)
+    output = BytesIO()
 
-output = BytesIO()
+    turmas = df['turma'].unique()
 
-turmas = df['turma'].unique()
+    print(turmas)
 
-print(turmas)
+    lista_plan = []
 
-lista_plan = []
+    for turma in turmas:
+        lista_plan.append(df[df['turma'] == turma])
 
-for turma in turmas:
-    lista_plan.append(df[df['turma'] == turma])
+    with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
+        for plan, i in zip(lista_plan, range(1,1+len(lista_plan))):
+            plan.to_excel(writer, sheet_name=f'Planilha-{i}', index=False)
+        writer.save()
 
-with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
-    for plan, i in zip(lista_plan, range(1,1+len(lista_plan))):
-        plan.to_excel(writer, sheet_name=f'Planilha-{i}', index=False)
-    writer.save()
+    st.download_button(
+    label="Baixe a planilha.",
+    data=output,
+    file_name="tumas_eletivas.xlsx",
+    mime="application/vnd.ms-excel")
 
-st.download_button(
-label="Baixe a planilha.",
-data=output,
-file_name="tumas_eletivas.xlsx",
-mime="application/vnd.ms-excel")
+except:
+    pass
