@@ -7,6 +7,8 @@ import streamlit as st
 st.set_page_config(page_title = "Web App ETE LAL")
 st.title('ETE LAL')
 
+st.file_uploader('Insira os arquivos aqui.')
+
 caminho = "https://drive.google.com/drive/folders/13TF1k1BbhINlrpLfQSTaZhw0wJJXs0WW?usp=sharing"
 
 print(caminho)
