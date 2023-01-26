@@ -50,11 +50,11 @@ if file is not None:
 
 #adding a file uploader to accept multiple CSV files
 
-uploaded_files = st.file_uploader("Please choose a CSV file", accept_multiple_files=True)
+uploaded_files = st.file_uploader("Please choose a XLSX file", accept_multiple_files=True)
 
 for file in uploaded_files:
 
-    bytes_data = file.read()
+    bytes_data = pd.read_xlsx(file)
 
     st.write("File uploaded:", file.name)
 
