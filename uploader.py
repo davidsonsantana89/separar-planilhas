@@ -9,7 +9,7 @@ st.markdown("""
 {
     visibility: hidden;
 }
-</style>
+</style>, unsafe_allow_html = True
 """)
 
 
