@@ -4,7 +4,7 @@
 import pandas as pd
 import streamlit as st
 
-st.set_page_config(title = "Web App ETE LAL")
+st.set_page_config(page_title = "Web App ETE LAL")
 
 caminho = "https://drive.google.com/drive/folders/13TF1k1BbhINlrpLfQSTaZhw0wJJXs0WW?usp=sharing"
 
