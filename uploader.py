@@ -29,14 +29,14 @@ try:
 
     output = BytesIO()
 
-    turmas = df['turma'].unique()
+    turmas = df['TURMA'].unique()
 
     print(turmas)
 
     lista_plan = []
 
     for turma in turmas:
-        lista_plan.append(df[df['turma'] == turma])
+        lista_plan.append(df[df['TURMA'] == turma])
         
     # esse trecho do código é baseado na discussão do link https://discuss.streamlit.io/t/how-to-add-a-download-excel-csv-function-to-a-button/4474/16
 
