@@ -43,7 +43,7 @@ try:
     with pd.ExcelWriter(output, engine='xlsxwriter') as writer:
         for plan, i in zip(lista_plan, range(1,1+len(lista_plan))):
             plan.to_excel(writer, sheet_name=f'Planilha-{i}', index=False)
-        writer.save()
+        writer.close()
 
     st.download_button(
     label="Baixe a planilha.",
